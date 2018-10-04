@@ -1,0 +1,25 @@
+#sitenav {
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1px;
+
+    background-color: #4aaaa5;
+    color: white;
+  
+  }
+  
+  a {
+    color: white;
+  }
+  
+  a:hover {
+    color: #4aaaa5;
+    text-decoration: none;
+  }
+  
+  
+  @media only screen and (max-width: 750px) {
+    #cur-sco, #top-sco {
+      font-size: 1rem;
+    }
+  }
