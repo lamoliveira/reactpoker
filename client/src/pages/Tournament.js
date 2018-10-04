@@ -17,12 +17,13 @@ class Tournament extends Component {
 
   componentDidMount() {
     this.loadTournaments();
+    console.log(this.state.tournamentname);
   }
 
   loadTournaments = () => {
     API.getTournaments()
       .then(res =>
-        this.setState({ Tournaments: res.data, tournamentname: "", tournamentrules:"" })
+        this.setState({ tournaments: res.data, tournamentname: "", tournamentdate: "", tournamentrules:"" })
       )
       .catch(err => console.log(err));
   };
@@ -45,10 +46,11 @@ class Tournament extends Component {
     if (this.state.tournamentname ) {
       API.saveTournament({
         tournamentname: this.state.tournamentname,
+        tournamentdate: this.state.tournamentdate,
         tournamentrules: this.state.tournamentrules
       })
         .then(res => this.loadTournaments())
-        .catch(err => console.tournamentname(err));
+        .catch(err => console.log(err));
     }
   };
 
@@ -64,7 +66,7 @@ class Tournament extends Component {
               <Input
                 value={this.state.tournamentname}
                 onChange={this.handleInputChange}
-                name="tournament name"
+                name="tournamentname"
                 placeholder="Tournament Name (required)"
               />
               <Input
@@ -93,7 +95,7 @@ class Tournament extends Component {
             </Jumbotron>
             {this.state.tournaments.length ? (
               <List>
-                {this.state.Tournaments.map(tournament => (
+                {this.state.tournaments.map(tournament => (
                   <ListItem key={tournament._id}>
                     <Link to={"/tournaments/" + tournament._id}>
                       <strong>

@@ -12,7 +12,7 @@ module.exports = {
   findById: function(req, res) {
     db.Tournament
       .findById(req.params.id)
-      .populate("league")
+     // .populate("league")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
